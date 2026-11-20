@@ -13,7 +13,7 @@ class TevormakersTeleOpKT : LinearOpMode() {
                 val backLeftMotor = hardwareMap.dcMotor.get("back_left_drive")
                 val backRightMotor = hardwareMap.dcMotor.get("back_right_drive")
 
-                //print to the driverhub
+                //print to the driver hub
                 telemetry.addLine("Initialized - waiting for start")
                 telemetry.update()
 
@@ -23,8 +23,8 @@ class TevormakersTeleOpKT : LinearOpMode() {
                 while (opModeIsActive()) {
 
 
-//                        val controlY = gamepad1.left_stick_y.toDouble()
-//                        val rBumper = gamepad1.left_bumper
+                        //val controlY = gamepad1.left_stick_y.toDouble()
+                        //val rBumper = gamepad1.left_bumper
                         //backRightMotor.power
                 }
         }
