@@ -12,6 +12,7 @@ class TevormakersTeleOpKT : LinearOpMode() {
                 val frontRightMotor = hardwareMap.dcMotor.get("front_right_drive")
                 val backLeftMotor = hardwareMap.dcMotor.get("back_left_drive")
                 val backRightMotor = hardwareMap.dcMotor.get("back_right_drive")
+                val intakeMotor = hardwareMap.dcMotor.get("intake")
 
                 //print to the driver hub
                 telemetry.addLine("Initialized - waiting for start")
