@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp
 
 @TeleOp(name = "TevormakersTeleOpKT", group = "TeleOp")
-class TevormakersTeleOpKT : LinearOpMode() {
+class TevorMakersTeleOpKT : LinearOpMode() {
         override fun runOpMode() {
 
                 // Create the motors
@@ -23,8 +23,29 @@ class TevormakersTeleOpKT : LinearOpMode() {
                 //repeat while running
                 while (opModeIsActive()) {
                         //val controlY = gamepad1.left_stick_y.toDouble()
+                        val up = gamepad1.dpad_up
+                        if(up) {
+                                backRightMotor.power = 1.0
+                                backLeftMotor.power = 1.0
+                                frontLeftMotor.power = 1.0
+                                frontRightMotor.power = 1.0
+                        }
+                        else {
+                                backRightMotor.power = 0.0
+                                backLeftMotor.power = 0.0
+                                frontLeftMotor.power = 0.0
+                                frontRightMotor.power = 0.0
+
+                        }
+
+
+                        }
+
+
+
+                        //val controlX = gamepad1.left_stick_x.toDouble()
                         //val rBumper = gamepad1.left_bumper
-                        //backRightMotor.power = 0.0
+                        //backRightMotor.power = 1.0
                 }
         }
 }
