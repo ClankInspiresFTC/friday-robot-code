@@ -22,11 +22,9 @@ class TevormakersTeleOpKT : LinearOpMode() {
 
                 //repeat while running
                 while (opModeIsActive()) {
-
-
                         //val controlY = gamepad1.left_stick_y.toDouble()
                         //val rBumper = gamepad1.left_bumper
-                        //backRightMotor.power
+                        //backRightMotor.power = 0.0
                 }
         }
 }
