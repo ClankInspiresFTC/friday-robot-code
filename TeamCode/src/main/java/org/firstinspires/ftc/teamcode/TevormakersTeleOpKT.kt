@@ -3,15 +3,15 @@ package org.firstinspires.ftc.teamcode
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp
 
-@TeleOp(name = "TevormakersTeleOpKT", group = "TeleOp")
+@TeleOp(name = "TevorMakersTeleOpKT", group = "TeleOp")
 class TevorMakersTeleOpKT : LinearOpMode() {
         override fun runOpMode() {
-
                 // Create the motors
                 val frontLeftMotor = hardwareMap.dcMotor.get("front_left_drive")
                 val frontRightMotor = hardwareMap.dcMotor.get("front_right_drive")
                 val backLeftMotor = hardwareMap.dcMotor.get("back_left_drive")
                 val backRightMotor = hardwareMap.dcMotor.get("back_right_drive")
+
                 val intakeMotor = hardwareMap.dcMotor.get("intake")
                 val shooter = hardwareMap.dcMotor.get("shooter")
 
@@ -26,30 +26,20 @@ class TevorMakersTeleOpKT : LinearOpMode() {
 
                         val controlY = gamepad1.left_stick_y.toDouble()
                         val controlX = gamepad1.left_stick_y.toDouble()
-                                backRightMotor.power = controlY
-                                backLeftMotor.power = controlY
-                                frontLeftMotor.power = controlY
-                                frontRightMotor.power = controlY
-                                backRightMotor.power = controlX
-                                backLeftMotor.power = controlX
-                                frontLeftMotor.power = controlX
-                                frontRightMotor.power = controlX
+                        //backRightMoter is reverse
+                        backRightMotor.power = -controlY
+                        backLeftMotor.power = controlY
+                        frontLeftMotor.power = controlY
+                        frontRightMotor.power = controlY
 
 
-                        val down = gamepad2.dpad_up
-                        if(down) {
+                        val inTakeAndOutTake = gamepad2.a
+                        if(inTakeAndOutTake) {
                                 intakeMotor.power = 1.0
+                                shooter.power = -1.0
                         }
                         else {
                                 intakeMotor.power = 0.0
-                        }
-
-
-                        val up = gamepad2.dpad_up
-                        if(up) {
-                                shooter.power = 1.0
-                        }
-                        else {
                                 shooter.power = 0.0
                         }
 
@@ -73,8 +63,8 @@ class TevorMakersTeleOpKT : LinearOpMode() {
 
 
 
-                        //val controlX = gamepad1.left_stick_x.toDouble()
-                        //val rBumper = gamepad1.left_bumper
-                        //backRightMotor.power = 1.0
-                }
+                //val controlX = gamepad1.left_stick_x.toDouble()
+                //val rBumper = gamepad1.left_bumper
+                //backRightMotor.power = 1.0
         }
+}
