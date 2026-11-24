@@ -7,8 +7,13 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp
 class TrevorMakersAutonomous : LinearOpMode() {
     override fun runOpMode() {
         // Create the motors
+        val frontLeftMotor = hardwareMap.dcMotor.get("front_left_drive")
+        val frontRightMotor = hardwareMap.dcMotor.get("front_right_drive")
+        val backLeftMotor = hardwareMap.dcMotor.get("back_left_drive")
+        val backRightMotor = hardwareMap.dcMotor.get("back_right_drive")
 
-        val robot = Robot(hardwareMap)
+        val intakeMotor = hardwareMap.dcMotor.get("intake")
+        val shooter = hardwareMap.dcMotor.get("shooter")
 
         //print to the driver hub
         telemetry.addLine("Initialized - waiting for start")

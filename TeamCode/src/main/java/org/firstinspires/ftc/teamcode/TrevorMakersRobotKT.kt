@@ -14,7 +14,7 @@ class Robot(hardwareMap: HardwareMap) {
     val backLeft = hardwareMap.dcMotor.get("back_left_drive")
     val backRight = hardwareMap.dcMotor.get("back_right_drive")
 
-    val intakeMotor = hardwareMap.dcMotor.get("intake")
+    val intake = hardwareMap.dcMotor.get("intake")
     val shooter = hardwareMap.dcMotor.get("shooter")
 
     init {
@@ -28,7 +28,7 @@ class Robot(hardwareMap: HardwareMap) {
         frontRight.direction = DcMotorSimple.Direction.FORWARD
         backRight.direction = DcMotorSimple.Direction.FORWARD
 
-        for (motor in listOf(frontLeftMotor, frontRightMotor, backLeftMotor, backRightMotor)) {
+        for (motor in listOf(frontLeft, frontRight, backLeft, backRight)) {
             motor.zeroPowerBehavior = DcMotor.ZeroPowerBehavior.BRAKE
             motor.resetEncoders()
         }
@@ -71,16 +71,16 @@ class Robot(hardwareMap: HardwareMap) {
         }
 
         // set the motors, and divide them by turningScale to make sure none of them go over the top, which would alter the translation angle
-        frontLeftMotor.power = (ADPower + turnPower) / turningScale
-        backLeftMotor.power = (BCPower + turnPower) / turningScale
-        frontRightMotor.power = (BCPower - turnPower) / turningScale
-        backRightMotor.power = (ADPower - turnPower) / turningScale
+        frontLeft.power = (ADPower + turnPower) / turningScale
+        backLeft.power = (BCPower + turnPower) / turningScale
+        frontRight.power = (BCPower - turnPower) / turningScale
+        backRight.power = (ADPower - turnPower) / turningScale
     }
 
     fun intakeTrigger(Power: Double) {
-        intakeMotor.power = Power
+        intake.power = Power
     }
     fun releaseBalls() {
-        intakeMotor.power = -0.1
+        intake.power = -0.1
     }
 }
