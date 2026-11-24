@@ -30,7 +30,6 @@ class Robot(hardwareMap: HardwareMap) {
 
         for (motor in listOf(frontLeft, frontRight, backLeft, backRight)) {
             motor.zeroPowerBehavior = DcMotor.ZeroPowerBehavior.BRAKE
-            motor.resetEncoders()
         }
     }
     

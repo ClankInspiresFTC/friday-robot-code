@@ -1,7 +1,12 @@
 package org.firstinspires.ftc.teamcode
 
+import com.qualcomm.hardware.bosch.BHI260IMU
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp
+import com.qualcomm.robotcore.hardware.DcMotorSimple
+import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit
+import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder
+import org.firstinspires.ftc.robotcore.external.navigation.AxesReference
 
 @TeleOp(name = "TevorMakersTeleOpKT", group = "TeleOp")
 class TevorMakersTeleOpKT : LinearOpMode() {
@@ -26,14 +31,20 @@ class TevorMakersTeleOpKT : LinearOpMode() {
 
                         val controlY = gamepad1.left_stick_y.toDouble()
                         val controlX = gamepad1.left_stick_y.toDouble()
-                        //backRightMoter is reverse
-                        backRightMotor.power = -controlY
+                        //backRightMoter and frontRightMotor is reverse
+                        backRightMotor.power = controlY
                         backLeftMotor.power = controlY
                         frontLeftMotor.power = controlY
                         frontRightMotor.power = controlY
+                        backRightMotor.direction = DcMotorSimple.Direction.REVERSE
+                        frontRightMotor.direction = DcMotorSimple.Direction.FORWARD
+                        backLeftMotor.direction = DcMotorSimple.Direction.FORWARD
+                        frontLeftMotor.direction = DcMotorSimple.Direction.REVERSE
 
 
-                        val inTakeAndOutTake = gamepad2.a
+
+
+                        val inTakeAndOutTake = gamepad1.a
                         if(inTakeAndOutTake) {
                                 intakeMotor.power = 1.0
                                 shooter.power = -1.0
@@ -45,20 +56,39 @@ class TevorMakersTeleOpKT : LinearOpMode() {
 
                         val left = gamepad1.dpad_left
                         if(left) {
-                                backRightMotor.power = -1.0
-                                backLeftMotor.power = 1.0
-                                frontLeftMotor.power = 1.0
-                                frontRightMotor.power = -1.0
-                        }
-
-                        val right = gamepad1.dpad_right
-                        if(right) {
                                 backRightMotor.power = 1.0
                                 backLeftMotor.power = -1.0
                                 frontLeftMotor.power = -1.0
                                 frontRightMotor.power = 1.0
                         }
 
+                        val right = gamepad1.dpad_right
+                        if(right) {
+                                backRightMotor.power = -1.0
+                                backLeftMotor.power = 1.0
+                                frontLeftMotor.power = 1.0
+                                frontRightMotor.power = -1.0
+                        }
+
+//                        val imuParameters = BHI260IMU.Parameters().apply {
+//                                angleUnit = BHI260IMU.AngleUnit.DEGREES
+//                                accelUnit = BHI260IMU.AccelUnit.METERS_PERSEC_PERSEC;
+//                                loggingEnabled = false
+//                        }
+                        //BHI260AP
+//                        val imu = hardwareMap.get(BHI260IMU::class.java, "imu")
+//                        imu.initialize(imuParameters)
+
+
+//                        val angles = imu.getAngularOrientation(
+//                                AxesReference.INTRINSIC,
+//                                AxesOrder.ZYX,
+//                                AngleUnit.DEGREES
+//                        )
+//                        telemetry.addData("First Angle", angles.firstAngle)
+//                        telemetry.addData("Second Angle", angles.secondAngle)
+//                        telemetry.addData("Third Angle", angles.thirdAngle)
+//                        telemetry.update()
                 }
 
 
